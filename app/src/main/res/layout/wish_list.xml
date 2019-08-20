@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FDFAF5">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:padding="8dp">
+
+        <ImageView
+            android:id="@+id/wishimage"
+            android:layout_width="110dp"
+            android:layout_height="80dp"
+            android:padding="4dp" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="80dp"
+            android:layout_toRightOf="@+id/wishimage"
+            android:background="@android:color/black" />
+
+        <TextView
+            android:id="@+id/textViewName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@id/wishimage"
+            android:text="Doctor: Saeed Elsayed Eldeeb"
+            android:textStyle="bold"
+            android:textColor="#000000" />
+
+
+        <TextView
+            android:id="@+id/textViewPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textViewName"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="20dp"
+            android:layout_toRightOf="@id/wishimage"
+            android:background="@color/colorPrimary"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:text="240.00  LE"
+            android:textColor="#ffff"
+            android:textStyle="bold" />
+
+
+
+
+    </RelativeLayout>
+
+</LinearLayout>

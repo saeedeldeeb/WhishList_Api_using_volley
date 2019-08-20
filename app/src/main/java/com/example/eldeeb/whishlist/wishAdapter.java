@@ -38,10 +38,10 @@ public class wishAdapter extends RecyclerView.Adapter<wishAdapter.wishViewHolder
 
 //loading image
         Picasso.with(context)
-                .load("http://lensaty.net/api/services/app/"+user.getWishImage())
+                .load("http://lensaty.net/api/services/app/MemberWishlist/"+user.getWishImage())
                 .resize(100, 80)
                 .centerCrop()
-                .error(R.drawable.ic_launcher_background)
+                .error(R.drawable.logo)
                 .into(wishViewHolder.wishImage);
 
         wishViewHolder.wishName.setText(user.getWishName());

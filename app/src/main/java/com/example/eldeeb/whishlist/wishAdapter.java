@@ -40,19 +40,19 @@ public class wishAdapter extends RecyclerView.Adapter<wishAdapter.wishViewHolder
 
 //loading image
         Picasso.with(context)
-                .load(BASE_URL+user.getWishImage())
+                .load(BASE_URL + user.getWishImage())
                 .resize(110, 80)
                 .centerCrop()
                 .error(R.drawable.logo)
                 .into(wishViewHolder.wishImage);
 
         wishViewHolder.wishName.setText(user.getWishName());
-        wishViewHolder.wishPrice.setText(user.getWishPrice()+"  LE.");
+        wishViewHolder.wishPrice.setText(user.getWishPrice() + "  LE.");
 
         wishViewHolder.deltebtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+// Remove Api is not clear for me, so i tried to test it before typing any code using postman and errors begin to appear.
             }
         });
     }

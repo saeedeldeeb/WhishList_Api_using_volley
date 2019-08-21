@@ -1,5 +1,6 @@
 package com.example.eldeeb.whishlist;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -32,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     //init
     EditText email, password;
     Button login;
+    ProgressDialog dialog;
 
 
     @Override
@@ -42,6 +44,11 @@ public class MainActivity extends AppCompatActivity {
         email = findViewById(R.id.input_email);
         password = findViewById(R.id.input_password);
         login = findViewById(R.id.btn_login);
+        dialog = new ProgressDialog(this);
+//init dialog
+        dialog.setMessage("Loading...");
+        dialog.setTitle("Signing In");
+        dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER); // Progress Dialog Style Spinner
 
 
         login.setOnClickListener(new View.OnClickListener() {
@@ -68,6 +75,8 @@ public class MainActivity extends AppCompatActivity {
     private void login_action() {
         user_name = email.getText().toString();
         passwd = password.getText().toString();
+dialog.show();
+dialog.setCancelable(false);
 
         RequestQueue queue = Volley.newRequestQueue(this);
 
@@ -82,8 +91,9 @@ public class MainActivity extends AppCompatActivity {
                     JSONObject json2 = json.getJSONObject("result");
                     token = json2.getString("accessToken");
                     Log.d("MyyyyyAccess", token);
-                    Intent i = new Intent(MainActivity.this,wishlist.class);
-                    i.putExtra("accessToken",token);
+                    dialog.dismiss();
+                    Intent i = new Intent(MainActivity.this, wishlist.class);
+                    i.putExtra("accessToken", token);
                     startActivity(i);
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -93,6 +103,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Toast.makeText(getBaseContext(), "Error" + error, Toast.LENGTH_LONG).show();
+                dialog.dismiss();
 
             }
         }) {

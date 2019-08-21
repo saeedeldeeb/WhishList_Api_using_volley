@@ -57,20 +57,19 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
+        // setText automatically
         if (BuildConfig.DEBUG) {
             email.setText("m.amgad15@yahoo.com");
             password.setText("123456");
         }
     }
 
+    // performing User Login
     private void login_action() {
         user_name = email.getText().toString();
         passwd = password.getText().toString();
 
-
-
         RequestQueue queue = Volley.newRequestQueue(this);
-
 
         StringRequest request = new StringRequest(Request.Method.POST, login_url, new Response.Listener<String>() {
             @Override

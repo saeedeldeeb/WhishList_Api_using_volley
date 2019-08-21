@@ -34,7 +34,6 @@ public class wishlist extends AppCompatActivity {
     RecyclerView recyclerView;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +44,10 @@ public class wishlist extends AppCompatActivity {
         recyclerView = findViewById(R.id.recylcerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        retrievingData_fromApi();
+    }
+
+    void retrievingData_fromApi() {
         RequestQueue queue = Volley.newRequestQueue(this);
 
         Log.d("MyAuthorization", tokenRecieve);
@@ -66,17 +69,14 @@ public class wishlist extends AppCompatActivity {
                     for (int i = 0; i < array.length(); i++) {
                         JSONObject usrwish = array.getJSONObject(i);
                         userwishesList.add(new userwishes(usrwish.getString("name")
-                                ,usrwish.getDouble("price"),usrwish.getString("imagePath")));
-
-
-
+                                , usrwish.getDouble("price"), usrwish.getString("imagePath")));
                     }
                 } catch (JSONException e) {
-                    Log.d("JSONError",e.getMessage());
-                    e.printStackTrace();
+                    Log.d("JSONError", e.getMessage());
                 }
 
-                wishAdapter adapter = new wishAdapter(wishlist.this,userwishesList);
+                // show items in recyclerView
+                wishAdapter adapter = new wishAdapter(wishlist.this, userwishesList);
                 recyclerView.setAdapter(adapter);
 
             }

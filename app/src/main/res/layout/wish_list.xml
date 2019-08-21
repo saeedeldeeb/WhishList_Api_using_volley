@@ -49,7 +49,13 @@
             android:textColor="#ffff"
             android:textStyle="bold" />
 
-
+<ImageButton
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentEnd="true"
+    android:layout_centerInParent="true"
+    android:src="@drawable/ic_delete_24dp"
+   android:id="@+id/deleteBtn" />
 
 
     </RelativeLayout>

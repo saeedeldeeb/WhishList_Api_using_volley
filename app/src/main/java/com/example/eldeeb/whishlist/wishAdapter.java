@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -15,6 +16,7 @@ import java.util.List;
 
 public class wishAdapter extends RecyclerView.Adapter<wishAdapter.wishViewHolder> {
 
+    private static final String BASE_URL = "http://lensaty.net/api/";
     private Context context;
     private List<userwishes> list;
 
@@ -38,14 +40,21 @@ public class wishAdapter extends RecyclerView.Adapter<wishAdapter.wishViewHolder
 
 //loading image
         Picasso.with(context)
-                .load("http://lensaty.net/api/services/app/MemberWishlist/"+user.getWishImage())
-                .resize(100, 80)
+                .load(BASE_URL+user.getWishImage())
+                .resize(110, 80)
                 .centerCrop()
                 .error(R.drawable.logo)
                 .into(wishViewHolder.wishImage);
 
         wishViewHolder.wishName.setText(user.getWishName());
         wishViewHolder.wishPrice.setText(user.getWishPrice()+"  LE.");
+
+        wishViewHolder.deltebtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
     }
 
     @Override
@@ -57,12 +66,14 @@ public class wishAdapter extends RecyclerView.Adapter<wishAdapter.wishViewHolder
 
         ImageView wishImage;
         TextView wishName, wishPrice;
+        ImageButton deltebtn;
 
         public wishViewHolder(@NonNull View itemView) {
             super(itemView);
             wishImage = itemView.findViewById(R.id.wishimage);
             wishName = itemView.findViewById(R.id.textViewName);
             wishPrice = itemView.findViewById(R.id.textViewPrice);
+            deltebtn = itemView.findViewById(R.id.deleteBtn);
         }
     }
 }

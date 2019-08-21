@@ -16,7 +16,7 @@ import java.util.List;
 
 public class wishAdapter extends RecyclerView.Adapter<wishAdapter.wishViewHolder> {
 
-    private static final String BASE_URL = "http://lensaty.net/api/";
+    private static final String BASE_URL = "http://lensaty.net/";
     private Context context;
     private List<userwishes> list;
 
